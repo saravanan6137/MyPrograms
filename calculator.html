@@ -1,0 +1,111 @@
+<html>
+<head>
+	<title>Calculator program</title>
+	<script type="text/javascript">
+		var first_value = 0;
+		var second_value = 0;
+		var third_value = 0;
+		function dis(buttonno){
+			document.getElementById('display').value += buttonno;
+		}
+		function solve(){
+			var input = document.getElementById('display').value;
+
+			let plus = input.includes('+');
+			let minus = input.includes('-');
+			let multiple = input.includes('*');
+			let divide = input.includes('/');
+
+			if(plus){
+				var split_input = input.split('+');
+				var first_value = split_input[0];
+				var second_value = split_input[1];
+				var third_value = split_input[2];
+				if(split_input.length == 2){
+					var total = parseInt(first_value)+parseInt(second_value)
+					document.getElementById('display').value = total;
+				}
+
+				else if(split_input.length == 3){
+					var total = parseInt(first_value) + parseInt(second_value) - parseInt(third_value);
+					document.getElementById('display').value = total;
+				}
+			}
+			else if(minus){
+				var split_input = input.split('-');
+				var first_value = split_input[0];
+				var second_value = split_input[1];
+				var total = parseInt(first_value) - second_value;
+				document.getElementById('display').value = total;
+			}
+			else if(multiple){
+				var split_input = input.split('*');
+				var first_value = split_input[0];
+				var second_value = split_input[1];
+				var total = parseInt(first_value) * parseInt(second_value);
+				document.getElementById('display').value = total;
+			}
+			else if(divide){
+				var split_input = input.split('/');
+				var first_value = split_input[0];
+				var second_value = split_input[1];
+				var total = parseInt(first_value) / parseInt(second_value);
+				document.getElementById('display').value = total;
+			}
+			
+		}
+		function clr(){
+			document.getElementById('display').value = "";
+		}
+	</script>
+	<style>
+		table th,td{
+		border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>
+			This is the calculator program
+		</p>
+
+		<br>
+
+		<div>
+
+			<table border="4" align="center">
+				<tr>
+				<td><center><input type="button" value="c" onclick="clr()"/></center> </td>
+				<td colspan="3"><input type="text" id="display"/></td>
+				</tr>
+				<tr>
+				<td><center><input type="button" value="1" onclick="dis(1)"/></center></td>
+				<td><center><input type="button" value="2" onclick="dis(2)"/></center></td>
+				<td><center><input type="button" value="3" onclick="dis(3)"/></center></td>
+				<td><center><input type="button" value="+" id="addition" onclick="dis('+')"/></center></td>
+				</tr>
+				<tr>
+				<td><center><input type="button" value="4" onclick="dis(4)"/></center></td>
+				<td><center><input type="button" value="5" onclick="dis(5)"/></center></td>
+				<td><center><input type="button" value="6" onclick="dis(6)"/></center></td>
+				<td><center><input type="button" value="-" id="subtraction" onclick="dis('-')"/></center></td>
+				</tr>
+				<tr>
+				<td><center><input type="button" value="7" onclick="dis(7)"/></center></td>
+				<td><center><input type="button" value="8" onclick="dis(8)"/></center></td>
+				<td><center><input type="button" value="9" onclick="dis(9)"/></center></td>
+				<td><center><input type="button" value="*" id="multiplication" onclick="dis('*')"/></center></td>
+				</tr>
+				<tr>
+				<td><center><input type="button" value="0" onclick="dis(0)"/></center></td>
+				<td><center><input type="button" value="." onclick="dis('.')"/></center></td>
+				<td><center><input type="button" value="=" onclick="solve()"/></center></td>
+				<td><center><input type="button" value="/" id="division" onclick="dis('/')"/></center></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</body>
+</html>
